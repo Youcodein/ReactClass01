@@ -9,6 +9,7 @@ import UnsplashSearch from "../include/UnsplashSearch";
 import UnsplashSlider from "../include/UnsplashSlider";
 import UnsplashTag from "../include/UnsplashTag";
 import Contact from "../layout/Contact";
+
 const Unsplash = () => {
   const [images, setImages] = useState([]);
   const [random, setRandom] = useState([]);
@@ -49,7 +50,7 @@ const Unsplash = () => {
         <Title title={["unsplash", "referece api"]} />
         <UnsplashSlider random={random}/>
         <UnsplashSearch onSearch={search} />
-        <UnsplashTag />
+        <UnsplashTag  onSearch={search} />
         <UnsplashCont images={images} />
         <Contact />
       </Contents>

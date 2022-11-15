@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay } from "swiper";
+import { Pagination } from "swiper";
 
 // Import Swiper styles
 import "swiper/css";
@@ -11,7 +11,7 @@ function UnsplashRandom({ random }) {
   return (
     <li>
       <a href={`https://unsplash.com/photos/${random.id}`}>
-        <img src={random.urls.regular} alt={random.urls.alt_description} />
+        <img src={random.urls.full + "&w=500&h=600&fit=crop"} alt={random.urls.alt_description} />
       </a>
     </li>
   );
@@ -21,31 +21,13 @@ const UnsplashSlider = ({ random }) => {
   return (
     <>
       <Swiper
-        slidesPerView={1}
-        spaceBetween={10}
+        slidesPerView={4}
+        spaceBetween={30}
+        centeredSlides={true}
         pagination={{
-          clickable: false,
+          clickable: true,
         }}
-        autoplay={{ delay: 2500, disableOnInteraction: false }}
-        breakpoints={{
-          "@0.00": {
-            slidesPerView: 1,
-            spaceBetween: 10,
-          },
-          "@0.75": {
-            slidesPerView: 2,
-            spaceBetween: 20,
-          },
-          "@1.00": {
-            slidesPerView: 3,
-            spaceBetween: 40,
-          },
-          "@1.50": {
-            slidesPerView: 4,
-            spaceBetween: 50,
-          },
-        }}
-        modules={[Autoplay]}
+        modules={[Pagination]}
         className="mySwiper"
       >
         <section className="cont__usplash">
