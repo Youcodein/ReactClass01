@@ -7,7 +7,12 @@ const Category = ({selectCategory, setSelectCategory}) => {
     <div>
       {categories.map((category) => (
 
-        <button key={category.name} onClick={()=>setSelectCategory(category.name)}>
+        <button 
+        style={{ borderBottom: category.name === selectCategory ? "1px solid" : "transparent"}}
+        key={category.name} 
+        onClick={()=>setSelectCategory(category.name)
+        
+        }>
           <span>{category.icon}</span>
           <span>{category.name}</span>
         </button>

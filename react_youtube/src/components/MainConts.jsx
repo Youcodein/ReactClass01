@@ -2,15 +2,17 @@ import React, { useEffect, useState } from 'react'
 import { fetchAPI } from '../utils/fetchAPI'
 import { Category, Videos } from './'
 
+
+
 const MainConts = () => {
-  const [selectCategory, setSelectCategory] = useState('decoration')
+  const [selectCategory, setSelectCategory] = useState('소품샵')
   const [videos, setVideos] = useState(null)
 
   useEffect(() => {
-    fetchAPI(`search?part=snippet&q=decoration`).then((data) =>
-      console.log(data)
+    fetchAPI(`search?part=snippet&q=${selectCategory}&type=video`).then((data) =>
+    setVideos(data.items)
     )
-  }, [])
+  }, [selectCategory])
 
   return (
     <main id="main">
