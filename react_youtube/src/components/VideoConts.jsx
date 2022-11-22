@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import ReactPlayer from 'react-player'
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import { fetchAPI } from '../utils/fetchAPI'
+import { Videos, Loader } from './'
+import { AiFillHeart } from 'react-icons/ai'
+
+
 
 const VideoConts = () => {
   const [videoDetail, setVideoDetail] = useState(null)
@@ -17,10 +21,12 @@ const VideoConts = () => {
     )
   },[id]);
 
-  // const { 
-  //   snippet : {title, channelId, channelTitle}, 
-  //   statistics : {viewCount, likeCount},
-  // } = videoDetail
+  if(!videoDetail?.snippet) return <Loader />
+
+  const { 
+    snippet : {title, channelId,  description, channelTitle}, 
+    statistics : {viewCount, likeCount},
+  } = videoDetail
 
   return (
     <section className='videoConts'>
@@ -31,11 +37,30 @@ const VideoConts = () => {
             <ReactPlayer url={`https://www.youtube.com/watch?v=${id}`}
             controls />
           </div>
-          <div className="videoConts__title"></div>
+          <div className="videoConts__desc">
+            <div className="channel__side">
+              <span className='channelTitle'>
+                <Link to={`/channel/${channelId}`}>{channelTitle}</Link></span>
+              <div className="count">
+              <span className='viewCount'>조회수 : {viewCount}</span>
+              <span className='likeCount'> <AiFillHeart />{likeCount}</span>
+              </div>
+            </div>
+            
+            <div className="video__desc">
+              <span className='title'>{title}</span>
+              <span className='description'>{description}</span>
+              {/* <span className='channelId'>{channelId}</span> */}
+            </div>
+            
+            
+          </div>
           </div>
 
           <div className="right">
-          <div className="videoConts__list"></div>
+          <div className="videoConts__list">
+            <Videos videos={videos} layout="column" />
+          </div>
           </div>
         </div>
       </div>
