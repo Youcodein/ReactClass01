@@ -12,7 +12,7 @@ const HeaderCont = () => {
       <h1 className="logo">
         <Link to="/">
         <SlSocialYoutube className="icon" />
-        Deco Youtube
+        DecoTube
         </Link>
       </h1>
       <SearchBar />

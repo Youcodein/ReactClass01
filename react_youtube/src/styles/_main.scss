@@ -6,22 +6,25 @@
         min-height: 100vh;
         border: 1px solid var(--bg-dark-border);
         padding: 20px;
-        
-        button {
-            display: block;
-            font-size: 16px;
-            margin-bottom: 20px;
-            padding: 10px;
-            cursor: pointer;
-
-            span:first-child {
-                display: inline-block;
-                margin-right: 15px;
-            }
-            &:hover {
-                border-bottom: 1px solid #fff;
+        >div {
+            position: fixed;
+            button {
+                display: block;
+                font-size: 16px;
+                margin-bottom: 20px;
+                padding: 10px;
+                cursor: pointer;
+    
+                span:first-child {
+                    display: inline-block;
+                    margin-right: 15px;
+                }
+                &:hover {
+                    border-bottom: 1px solid #fff;
+                }
             }
         }
+        
         
     }
     #contents{
@@ -219,4 +222,57 @@
         padding: 0 100px;
     }
 
+}
+
+
+// media
+
+@media (max-width: 1200px){
+    #main {
+        flex-wrap: wrap;
+        flex-direction: column;
+        #aside {
+            width: 100%;
+            min-height: 0;
+
+            >div{
+                position: relative;
+                button {
+                    display: inline;
+        
+                    span:first-child {
+                        
+                    }
+                    &:hover {
+                    }
+                }
+            }
+            
+            
+        }
+        #contents{
+            width: 100%;
+    
+            h2 {
+                em {
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 960px){
+    #aside {
+        margin-top: 70px;
+    }
+    .videos__inner {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        flex-direction: column;
+        align-content: center;
+        >div {
+            width: 100%;
+        }
+    }
 }
